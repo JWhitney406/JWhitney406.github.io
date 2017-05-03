@@ -36,6 +36,7 @@ app.factory('NewItemF', ['Resource', function ($resource) {
         var AllLocationService = $resource('https://msucs491-spring17-assignment2.azurewebsites.net/api/location/',
         {
             'query': { method: 'GET', isArray: false },
+            'save': { method: 'POST' },
         });
 
         //Get Initial Data
@@ -52,7 +53,7 @@ app.factory('NewItemF', ['Resource', function ($resource) {
                 $scope.addLocById(location.ID, location.Name);
             }*/
             $scope.allLocations.Items.forEach(function (location) {
-                console.log(location);
+                //console.log(location);
                 $scope.addLocById(location.ID, location.Name);
             });
             $scope.addRevLoc();
@@ -77,9 +78,9 @@ app.factory('NewItemF', ['Resource', function ($resource) {
 
         $scope.$watch("newItem.Name", function (newVal, oldVal) {
             if (newVal == "Jack" || newVal == "jack") {
-                console.log('I don\'t know that I would consider Jack to be food');
+                alert('I don\'t know that I would consider Jack to be food');
             } else if (newVal == "Andy" || newVal == "andy") {
-                console.log('I don\'t know that I would consider Andy to be food');
+                alert('I don\'t know that I would consider Andy to be food');
             }
         });
 
@@ -107,10 +108,21 @@ app.factory('NewItemF', ['Resource', function ($resource) {
                 $scope.item.Name = $scope.modItem.Name || $scope.item.Name;
                 $scope.item.Description = $scope.modItem.Description || $scope.item.Description;
                 $scope.item.Expires = $scope.modItem.Expires || $scope.item.Expires;
-                $scope.item.Location = $scope.locIdDict[$scope.modItem.Location] || $scope.item.Location;
+                $scope.item.LocationID = $scope.locIdDict[$scope.modItem.Location.trim()] || $scope.item.Location;
                 $scope.item.Quantity = $scope.modItem.Quantity || $scope.item.Quantity;
                 ItemService.save($scope.item, function () {
                     $scope.allItems = AllItemService.get();//update list
+                });
+            });
+        }
+        $scope.addNewLocation = function () {
+            AllLocationService.save($scope.newLocation, function () {
+                $scope.allLocations = AllLocationService.get(function () {
+                    $scope.allLocations.Items.forEach(function (location) {
+                        //console.log(location);
+                        $scope.addLocById(location.ID, location.Name);
+                    });
+                    $scope.addRevLoc();
                 });
             });
         }
@@ -125,20 +137,12 @@ app.factory('NewItemF', ['Resource', function ($resource) {
                     $scope.locIdDict[$scope.locDict[key]] = key;
                 //}
             }
-            console.log("revLoc");
-            console.log("TEST");
-            console.log($scope.locIdDict);
+            //console.log("revLoc");
+            //console.log("TEST");
+            //console.log($scope.locIdDict);
         }
         $scope.myFormatDate = function (date) {
             let d = new Date(date);
-            //let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-            /*
-                Code (next line, edited) taken from: http://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
-                Credit to StackOverflow users: lorem monkey, and sebastian.i
-            */
-            var datestring = ("0" + d.getDate()).slice(-2) + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
-                d.getFullYear() + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2);
             return d.toDateString();
         }
         $scope.getLocFromId = function(givenLocId)
@@ -146,6 +150,7 @@ app.factory('NewItemF', ['Resource', function ($resource) {
             if ($scope.locDict[givenLocId] != null) {
                 return $scope.locDict[givenLocId];
             } else {
+                //console.log(givenLocId);
                 return "Invalid Location"
             }
         }

@@ -45,13 +45,25 @@
                 <label class="control-label">Expiration Date</label>
                 <input type=datetime-local step="1" data-ng-model="modItem.Expires" />
                 <label class="control-label">Location</label>
-                <select data-ng-model="newItem.Location">
+                <select data-ng-model="modItem.Location">
                     <option data-ng-repeat="loc in allLocations.Items">
                         {{ loc.Name }}
                     </option>
                 </select>
                 <input type="button" data-ng-click="modItem(modItem.ID)" value="Modify existing item" />
            
+        </div>
+
+        <h2>New Location</h2>
+        <div class="col-md-8">
+
+            <label class="control-label">Name</label>
+            <input class="form-control" data-ng-model="newLocation.Name" type="text" />
+            <label class="control-label">Description</label>
+            <input class="form-control" data-ng-model="newLocation.Description" type="text"/>
+            <input type="button" data-ng-click="addNewLocation()" value="Add new location" />
+
+
         </div>
 
         <h2>Item List</h2>
