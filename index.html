@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+
+<html data-ng-app="app">
+<head>
+    <title>Assignment 3</title>
+</head>
+<body>
+    <div data-ng-controller="Main">
+        <h1>Promise Example</h1>
+        <div>
+            <h2>Logs</h2>
+            <p data-ng-repeat="note in notes">
+                <code>{{note}}</code>
+            </p>
+        </div>
+
+        <h2>New Item</h2>
+        <div data-ng-repeat="loc in allLocations.Items">
+            {{ addLocById(loc.ID, loc.Name) }}
+        </div>
+        <div>
+            <label  class="control-label">Name</label>
+            <input class="form-control" data-ng-model="newItem.Name" type="text" placeholder="Moldy Bananas" />
+            <label  class="control-label">Description</label>
+            <input class="form-control" data-ng-model="newItem.Description" type="text" placeholder="Eww..." />
+            <label  class="control-label">Quantity</label>
+            <input class="form-control" data-ng-model="newItem.Quantity" type="text" placeholder="300" />
+            <label  class="control-label">Expiration Date</label>
+            <input type=datetime-local value="2017-06-04T20:36:00" step="1" data-ng-model="newItem.Expires" />
+            <label  class="control-label">Location</label>
+            <select data-ng-model="newItem.Location">
+                <option data-ng-repeat="loc in allLocations.Items">
+                    {{ loc.Name }}
+                </option>
+            </select>
+            <input type="button" data-ng-click="addNewItem()" value="Add new item" />
+            
+
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Expires</th>
+                    <th>Time Until Expiration</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="singleItem in allItems.Items">
+                    <td>{{ singleItem.Name }}</td>
+                    <td>{{ singleItem.Description }}</td>
+                    <td>{{ singleItem.Quantity }}</td>
+                    <td>{{ myFormatDate(singleItem.Expires) }}</td>
+                    <td>{{ getTimeUntil(singleItem.Expires) }}</td>
+                    <td>{{ getLocFromId(singleItem.LocationID) }}</td>
+                </tr>
+            </tbody>
+
+        </table>
+        <div>
+            <h2>Response</h2>
+            <pre>{{ item | json}}</pre>
+        </div>
+        <div>
+            <h2>All Items</h2>
+            <pre>{{ allItems | json}}</pre>
+        </div>
+        <div>
+            <h2>All Locations</h2>
+            <pre>{{ allLocations | json}}</pre>
+        </div>
+
+        <script src="Scripts/angular.min.js"></script>
+        <script src="Scripts/angular-resource.min.js"></script>
+        <script src="app/main.js"></script>
+    </div>
+</body>
+</html>
