@@ -18,7 +18,8 @@
         <div data-ng-repeat="loc in allLocations.Items">
             {{ addLocById(loc.ID, loc.Name) }}
         </div>
-        <div>
+        <div class="col-md-8">
+            <article>
             <label  class="control-label">Name</label>
             <input class="form-control" data-ng-model="newItem.Name" type="text" placeholder="Moldy Bananas" />
             <label  class="control-label">Description</label>
@@ -34,7 +35,7 @@
                 </option>
             </select>
             <input type="button" data-ng-click="addNewItem()" value="Add new item" />
-            
+            </article>
 
         </div>
 
@@ -55,7 +56,7 @@
                     <td>{{ singleItem.Description }}</td>
                     <td>{{ singleItem.Quantity }}</td>
                     <td>{{ myFormatDate(singleItem.Expires) }}</td>
-                    <td>{{ getTimeUntil(singleItem.Expires) }}</td>
+                    <td bgcolor="{{getColor(getTimeUntil(singleItem.Expires))}}">{{ getTimeUntil(singleItem.Expires) }}</td>
                     <td>{{ getLocFromId(singleItem.LocationID) }}</td>
                 </tr>
             </tbody>

@@ -6,6 +6,7 @@
         $scope.allItems = [];
         $scope.allLocations = [];
         $scope.locDict = {};
+        $scope.locIdDict = {};
         $scope.counter = Math.floor(Math.random() * (10000 - 1)) + 1;
 
         //Setup Resources
@@ -41,9 +42,22 @@
             $scope.item.$save(); //Save
         });
 
+        $scope.getColor = function(expVal)
+        {
+            if (expVal in ['Expires in 3 days', 'Expires in 2 days', 'Expires tomorrow']) {
+                return "yellow";
+            } else if (expVal.includes('Expired')) {
+                return "red";
+            } else {
+                return "lightgreen";
+            }
+        }
+
         $scope.$watch("newItem.Name", function (newVal, oldVal) {
-            if (newVal == "test") {
-                alert('You named it test');
+            if (newVal == "Jack" || newVal == "jack") {
+                alert('I don\'t know that I would consider Jack to be food');
+            } else if (newVal == "Andy" || newVal == "andy") {
+                alert('I don\'t know that I would consider Andy to be food');
             }
         });
 
@@ -54,7 +68,7 @@
                 $scope.item.Name = $scope.newItem.Name;
                 $scope.item.Description = $scope.newItem.Description;
                 $scope.item.Expiration = $scope.newItem.Expiration;
-                $scope.item.Location = 67;//TODO fix this/////////////////////////
+                $scope.item.Location = $scope.locIdDict[$scope.newItem.Location];
                 $scope.item.Quantity = $scope.newItem.Quantity;
                 $scope.item.$save(); //Save
             });
@@ -64,10 +78,11 @@
         }
         $scope.addLocById = function (idNum, idName) {
             $scope.locDict[idNum] = idName;
+            $scope.locIdDict[idName] = idNum;
         }
         $scope.myFormatDate = function (date) {
             let d = new Date(date);
-            let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            //let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
             /*
                 Code (next line, edited) taken from: http://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
