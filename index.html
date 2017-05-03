@@ -6,20 +6,11 @@
 </head>
 <body>
     <div data-ng-controller="Main">
-        <h1>Promise Example</h1>
-        <div>
-            <h2>Logs</h2>
-            <p data-ng-repeat="note in notes">
-                <code>{{note}}</code>
-            </p>
-        </div>
+        <h1>Assignment 3</h1>
 
         <h2>New Item</h2>
-        <div data-ng-repeat="loc in allLocations.Items">
-            {{ addLocById(loc.ID, loc.Name) }}
-        </div>
         <div class="col-md-8">
-            <article>
+            
             <label  class="control-label">Name</label>
             <input class="form-control" data-ng-model="newItem.Name" type="text" placeholder="Moldy Bananas" />
             <label  class="control-label">Description</label>
@@ -27,7 +18,7 @@
             <label  class="control-label">Quantity</label>
             <input class="form-control" data-ng-model="newItem.Quantity" type="text" placeholder="300" />
             <label  class="control-label">Expiration Date</label>
-            <input type=datetime-local value="2017-06-04T20:36:00" step="1" data-ng-model="newItem.Expires" />
+            <input type=datetime-local step="1" data-ng-model="newItem.Expires" />
             <label  class="control-label">Location</label>
             <select data-ng-model="newItem.Location">
                 <option data-ng-repeat="loc in allLocations.Items">
@@ -35,13 +26,39 @@
                 </option>
             </select>
             <input type="button" data-ng-click="addNewItem()" value="Add new item" />
-            </article>
+            
 
         </div>
 
+        <h2>Modify Item</h2>
+        <h4>Attributes which are left blank will remain unchanged</h4>
+        <div class="col-md-8">
+            
+                <label class="control-label">ID</label>
+                <input class="form-control" data-ng-model="modItem.ID" type="text"/>
+                <label class="control-label">Name</label>
+                <input class="form-control" data-ng-model="modItem.Name" type="text"/>
+                <label class="control-label">Description</label>
+                <input class="form-control" data-ng-model="modItem.Description" type="text"/>
+                <label class="control-label">Quantity</label>
+                <input class="form-control" data-ng-model="modItem.Quantity" type="text"/>
+                <label class="control-label">Expiration Date</label>
+                <input type=datetime-local step="1" data-ng-model="modItem.Expires" />
+                <label class="control-label">Location</label>
+                <select data-ng-model="newItem.Location">
+                    <option data-ng-repeat="loc in allLocations.Items">
+                        {{ loc.Name }}
+                    </option>
+                </select>
+                <input type="button" data-ng-click="modItem(modItem.ID)" value="Modify existing item" />
+           
+        </div>
+
+        <h2>Item List</h2>
         <table>
             <thead>
                 <tr>
+                    <th>ID Number</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Quantity</th>
@@ -52,6 +69,7 @@
             </thead>
             <tbody>
                 <tr data-ng-repeat="singleItem in allItems.Items">
+                    <td>{{ singleItem.ID }}</td>
                     <td>{{ singleItem.Name }}</td>
                     <td>{{ singleItem.Description }}</td>
                     <td>{{ singleItem.Quantity }}</td>
@@ -62,7 +80,7 @@
             </tbody>
 
         </table>
-        <div>
+        <!--<div>
             <h2>Response</h2>
             <pre>{{ item | json}}</pre>
         </div>
@@ -74,6 +92,7 @@
             <h2>All Locations</h2>
             <pre>{{ allLocations | json}}</pre>
         </div>
+        -->
 
         <script src="Scripts/angular.min.js"></script>
         <script src="Scripts/angular-resource.min.js"></script>

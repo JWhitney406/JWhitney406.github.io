@@ -17,3 +17,15 @@ C:\Users\Joe\Desktop\Joe School Junior\ASP\Assignment3\Assignment3\bin\Microsoft
 C:\Users\Joe\Desktop\Joe School Junior\ASP\Assignment3\Assignment3\obj\Debug\Assignment3.csprojResolveAssemblyReference.cache
 C:\Users\Joe\Desktop\Joe School Junior\ASP\Assignment3\Assignment3\obj\Debug\Assignment3.dll
 C:\Users\Joe\Desktop\Joe School Junior\ASP\Assignment3\Assignment3\obj\Debug\Assignment3.pdb
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\ApplicationInsights.config
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Assignment3.dll.config
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Assignment3.dll
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Assignment3.pdb
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Microsoft.AI.Web.xml
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\obj\Debug\Assignment3.csprojResolveAssemblyReference.cache
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\obj\Debug\Assignment3.dll
+C:\Users\Joe\Desktop\Joe School Junior\ASP\JWhitney406.github.io\obj\Debug\Assignment3.pdb
