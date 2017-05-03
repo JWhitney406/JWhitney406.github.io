@@ -3,6 +3,7 @@
 <html data-ng-app="app">
 <head>
     <title>Assignment 3</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div data-ng-controller="Main">
@@ -86,7 +87,7 @@
                     <td>{{ singleItem.Description }}</td>
                     <td>{{ singleItem.Quantity }}</td>
                     <td>{{ myFormatDate(singleItem.Expires) }}</td>
-                    <td bgcolor="{{getColor(getTimeUntil(singleItem.Expires))}}">{{ getTimeUntil(singleItem.Expires) }}</td>
+                    <td class="{{getColor(getTimeUntil(singleItem.Expires))}}">{{ getTimeUntil(singleItem.Expires) }}</td>
                     <td>{{ getLocFromId(singleItem.LocationID) }}</td>
                 </tr>
             </tbody>
